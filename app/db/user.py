@@ -26,10 +26,10 @@ def checkUser(login_email, login_password):
 
             return 0
 
+        else:
+
+            return 1
+
     except:
 
         return 0
-
-    else:
-
-        return 1

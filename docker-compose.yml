@@ -1,0 +1,27 @@
+version: '3.0'
+
+services:
+
+  db-postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456789Zz.
+      - POSTGRES_DB=postgres
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - '5433:5432'
+
+  fast-api1:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db-postgres
+    volumes:
+      - .:/code
+
+    restart: on-failure

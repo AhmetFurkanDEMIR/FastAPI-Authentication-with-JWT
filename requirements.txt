@@ -1,0 +1,6 @@
+uvicorn
+fastapi
+psycopg2
+pyjwt
+pydantic[email]
+passlib
